@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "74181f3d-bb42-4b4d-b813-58e877ed10d8",
+		"name": "Proyect Geniat Host",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15614562"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Consultar Todos los Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://geniatproyect.000webhostapp.com/users",
+							"protocol": "https",
+							"host": [
+								"geniatproyect",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://geniatproyect.000webhostapp.com/user/1",
+							"protocol": "https",
+							"host": [
+								"geniatproyect",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombre",
+									"value": "Wilbert Eduardo",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "Villegas Gutierrez",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "wilbert_1291@live.com.mx",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "rol",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://geniatproyect.000webhostapp.com/addUser",
+							"protocol": "https",
+							"host": [
+								"geniatproyect",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"addUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Iniciar sesión",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "correo",
+									"value": "wilbert1291@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://geniatproyect.000webhostapp.com/iniciar_sesion",
+							"protocol": "https",
+							"host": [
+								"geniatproyect",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"iniciar_sesion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cerrar sesión",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://geniatproyect.000webhostapp.com/cerrar_sesion",
+							"protocol": "https",
+							"host": [
+								"geniatproyect",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"cerrar_sesion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publicaciones",
+			"item": [
+				{
+					"name": "Crear publicacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "titulo",
+									"value": "Hola mundo 2",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "Descripción 2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://geniatproyect.000webhostapp.com/createPost",
+							"protocol": "https",
+							"host": [
+								"geniatproyect",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"createPost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar publicacion",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"idPublicacion\": \"1\",\r\n        \"titulo\": \"Hola mundo actualizado\",\r\n        \"descripcion\": \"Descripcion actualizada\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://geniatproyect.000webhostapp.com/updatePost",
+							"protocol": "https",
+							"host": [
+								"geniatproyect",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"updatePost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar publicacion (logico)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://geniatproyect.000webhostapp.com/deletePost/2",
+							"protocol": "https",
+							"host": [
+								"geniatproyect",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"deletePost",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Publicaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://geniatproyect.000webhostapp.com/Posts",
+							"protocol": "https",
+							"host": [
+								"geniatproyect",
+								"000webhostapp",
+								"com"
+							],
+							"path": [
+								"Posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

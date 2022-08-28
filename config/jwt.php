@@ -5,11 +5,11 @@
     class JWTGenerator {
         static public function generadorJWT($id, $correo, $rol) {
             $tiempo = time(); //Fecha actual
-            $tiempoExpiracion = $tiempo  + (60*60*24); //1 dia mas
+            $tiempoExpiracion = $tiempo  + (60*60*24); //1 dia de duración
 
             $token = array(
                 "iat" => $tiempo, //Inicio del token
-                "exp" => $tiempoExpiracion, //Tiempo de expiracion del token
+                "exp" => $tiempoExpiracion, //Fecha de expiracion del token
                 "data" => [
                     "id" => $id,
                     "email" => $correo,

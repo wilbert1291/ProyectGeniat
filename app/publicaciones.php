@@ -40,13 +40,13 @@
         function actualizarPublicacion($titulo, $descripcion, $idPublicacion){
             $conexion = $this->conexion();
             
-            $sql = "SELECT idPublicacion FROM tblpublicaciones WHERE idPublicacion = :idPublicacion AND borrado = 1;";
+            $sql = "SELECT idPublicacion FROM tblpublicaciones WHERE idPublicacion = :idPublicacion AND borrado = 0;";
             $query = $conexion->prepare($sql);
             $query->bindParam(":idPublicacion", $idPublicacion, PDO::PARAM_INT);
             $query->execute();
 
-            if($query->rowCount() > 0) {
-                $json = genericResponse::ErrorCliente_400(["El registro que intentas actualizar ya no esta disponible."]);
+            if($query->rowCount() == 0) {
+                $json = genericResponse::ErrorCliente_400(["El registro que intentas actualizar no existe o ha sido eliminado."]);
                 return $json;
             }
 
@@ -72,13 +72,13 @@
         function eliminarPublicacion($idPublicacion) {
             $conexion = $this->conexion();
 
-            $sql = "SELECT idPublicacion FROM tblpublicaciones WHERE idPublicacion = :idPublicacion AND borrado = 1;";
+            $sql = "SELECT idPublicacion FROM tblpublicaciones WHERE idPublicacion = :idPublicacion AND borrado = 0;";
             $query = $conexion->prepare($sql);
             $query->bindParam(":idPublicacion", $idPublicacion, PDO::PARAM_INT);
             $query->execute();
 
-            if($query->rowCount() > 0) {
-                $json = genericResponse::ErrorCliente_400(["El registro que intentas eliminar ya ha sido eliminado."]);
+            if($query->rowCount() == 0) {
+                $json = genericResponse::ErrorCliente_400(["El registro que intentas eliminar ya ha sido eliminado o no existe."]);
                 return $json;
             }
 
@@ -93,7 +93,7 @@
                 "idRol" => $_COOKIE['idRol'],
             );
 
-            $json = genericResponse::PeticionCompletaConExito_201("DELETE", $data);
+            $json = genericResponse::RegistroEliminado_200($data);
             
             return $json;
         }

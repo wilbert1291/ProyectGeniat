@@ -57,6 +57,8 @@
                 array_push($errores, ["Rol" => "Debe seleccionar un Rol."]);
             } else if(!is_numeric($idRol)) {
                 array_push($errores, ["Rol" => "Debe ser un número."]);
+            } else if(strlen($idRol > 10)){
+                array_push($errores, ["Rol" => "El campo no puede tener mas de 10 digitos."]);
             }
 
             return $errores;

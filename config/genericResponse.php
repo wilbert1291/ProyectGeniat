@@ -11,6 +11,17 @@
             return $json;
         }
 
+        static function RegistroEliminado_200($data) {
+            $token = (isset($_COOKIE['uniqueToken']) ? $_COOKIE['uniqueToken'] : null);
+            $json = array(
+                'status' => 200,
+                'message' => 'Registro eliminado con exito.',
+                'token' => $token,
+                'data' => $data
+            );
+            return $json;
+        }
+
         static function InformacionRecibida_200($length, $data) {
             $token = (isset($_COOKIE['uniqueToken']) ? $_COOKIE['uniqueToken'] : null);
             $json = array(
